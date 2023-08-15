@@ -12,6 +12,7 @@
 
  body {
      font-family: Inter;
+     padding: 10px;
  }
 
  .container {
@@ -38,7 +39,8 @@
 
  .form-body {
      background-position: center;
-
+     width: 100%;
+     max-width: 396px;
  }
 
  .container h2 {
@@ -77,13 +79,19 @@
  }
 
  input {
-     margin: 0 auto;
-     width: 100%;
-     max-width: 348px;
+     margin: 0;
      padding: 8px;
      border: 1px solid #ccc;
      border-radius: 4px;
      padding: 8px 16px 8px 16px;
+     width: calc(100% - 32px);
+     font-size: 14px;
+     line-height: 16.94px;
+     font-weight: 400;
+ }
+
+ .input:focus-visible {
+     border: 1px solid var(--default-active-color-btn) !important;
  }
 
  .is-invalid {
@@ -95,8 +103,52 @@
  .invalid-feedback {
      color: var(--error-color);
      display: none;
+     font-size: 14px;
+     font-weight: 400;
+     line-height: 16.94px;
+ }
+
+ .btn-submit {
+     padding: 8px 16px 8px 16px;
+     color: #FFFFFF;
+     width: 100%;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 21.78px;
+     text-align: center;
+     background-color: var(--default-active-color-btn);
+     border-radius: 4px;
+     border: 1px solid var(--default-active-color-btn);
+     margin: 0;
+ }
+
+ .btn-submit[disabled] {
+     background-color: var(--disabled-color-btn);
+     border: 1px solid var(--disabled-color-btn);
+ }
+
+ .btn-submit[disabled]:hover {
+     background-color: var(--disabled-color-btn);
+     border: 1px solid var(--disabled-color-btn);
+ }
+
+ .btn-submit:hover {
+     background-color: var(--hover-color-btn);
+     border: 1px solid var(--hover-color-btn);
+ }
+
+ input:focus-visible {
+     outline: 1px solid var(--default-active-color-btn) !important;
+ }
+
+ .is-invalid:focus-visible {
+     outline: 1px solid var(--error-color) !important;
  }
 
  .invalid-feedback.show {
-     display: block;
+     display: flex;
+ }
+
+ .error-icon {
+     margin-right: 8px;
  }
