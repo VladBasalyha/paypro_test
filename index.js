@@ -23,7 +23,7 @@ $(document).ready(function () {
 	// Validate the validation URL input
 	$("#validationUrl").on("blur", function () {
 		var validationUrl = $(this).val();
-		var regex = /^https:\/\/.*$/;
+		var regex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
 		var invalidFeedback = $(this).siblings(".invalid-feedback");
 		if (!regex.test(validationUrl)) {
 			$(this).addClass("is-invalid");
