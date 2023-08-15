@@ -1,0 +1,102 @@
+ :root {
+     --default-active-color-btn: #2774E6;
+     --hover-color-btn: #3980EA;
+     --focus-color-btn: #1B69DC;
+     --disabled-color-btn: #A3BFE8;
+     --text-color: #373747;
+     --subtext-color: #5C6269;
+     --borders-color-input: #D5DCE3;
+     --form-bg-color: #FFFFFF;
+     --error-color: #DB4732;
+ }
+
+ body {
+     font-family: Inter;
+ }
+
+ .container {
+     margin: 0 auto;
+     background-color: var(--form-bg-color);
+     padding: 32px 24px 32px 24px;
+     box-shadow: 0px 8px 16px 0px #5E7BB226;
+     border-radius: 12px;
+ }
+
+
+
+ body {
+     height: 100vh;
+     background: url('./src/images/background.png');
+     margin: 0;
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .form-body {
+     background-position: center;
+
+ }
+
+ .container h2 {
+     text-align: center;
+     font-size: 32px;
+     margin: 0 0 32px 0;
+     line-height: 38.73px;
+     color: var(--text-color);
+
+ }
+
+ .verification-call {
+     margin-bottom: 24px;
+     display: block;
+ }
+
+ .verification-form {}
+
+ .form-group {
+     margin-bottom: 20px;
+ }
+
+ label {
+     font-weight: 700;
+     font-size: 14px;
+     line-height: 16.94px;
+     display: block;
+     margin-bottom: 8px;
+ }
+
+ .verification-call {
+     color: var(--subtext-color);
+     font-weight: 400;
+     font-size: 16px;
+     line-height: 19.36px;
+ }
+
+ input {
+     margin: 0 auto;
+     width: 100%;
+     max-width: 348px;
+     padding: 8px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     padding: 8px 16px 8px 16px;
+ }
+
+ .is-invalid {
+     border-color: var(--error-color);
+     color: var(--error-color);
+     margin-bottom: 8px;
+ }
+
+ .invalid-feedback {
+     color: var(--error-color);
+     display: none;
+ }
+
+ .invalid-feedback.show {
+     display: block;
+ }
