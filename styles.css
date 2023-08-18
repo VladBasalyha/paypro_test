@@ -80,25 +80,25 @@
  }
 
  input {
+     background-color: #FFFFFF !important;
      margin: 0;
-     padding: 8px;
      border: 1px solid #ccc;
      border-radius: 4px;
-     padding: 8px 16px 8px 16px;
+     padding: 11px 16px;
      width: calc(100% - 32px);
-     font-size: 14px;
-     line-height: 16.94px;
+     font-size: 14px !important;
+     line-height: 1.24em !important;
      font-weight: 400;
      color: var(--text-color) !important;
  }
 
- .input:focus-visible {
-     border: 1px solid var(--default-active-color-btn) !important;
+ input:focus-visible {
+     outline: 1px solid var(--default-active-color-btn) !important;
  }
 
  .is-invalid {
      border-color: var(--error-color);
-     color: var(--error-color);
+     color: var(--error-color) !important;
      margin-bottom: 8px;
  }
 
@@ -111,12 +111,12 @@
  }
 
  .btn-submit {
-     padding: 8px 16px 8px 16px;
+     padding: 13px 16px 13px 16px;
      color: #FFFFFF;
      width: 100%;
      font-weight: 600;
-     font-size: 16px;
-     line-height: 21.78px;
+     font-size: 18px;
+     line-height: 1.21em;
      text-align: center;
      background-color: var(--default-active-color-btn);
      border-radius: 4px;

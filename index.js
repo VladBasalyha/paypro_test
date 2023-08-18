@@ -1,49 +1,61 @@
 $(document).ready(function () {
 	// Disable the submit button by default
-	$("#submit").prop("disabled", true);
+	$(".btn-submit").prop("disabled", true);
 
 	// Validate the email input
-	$("#email").on("blur", function () {
-		var email = $(this).val();
-		var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-		var invalidFeedback = $(this).siblings(".invalid-feedback");
-		if (!regex.test(email)) {
-			$(this).addClass("is-invalid");
-			invalidFeedback.addClass("show");
-			$("#submit").prop("disabled", true);
-		} else {
-			$(this).removeClass("is-invalid");
-			invalidFeedback.removeClass("show");
-			if ($("#validationUrl").val().startsWith("https://")) {
-				$("#submit").prop("disabled", false);
-			}
-		}
-	});
+	function validateEmail() {
+		var email = $(".email").val();
+		var regex = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+		return regex.test(email);
+	}
 
 	// Validate the validation URL input
-	$("#validationUrl").on("blur", function () {
-		var validationUrl = $(this).val();
-		var regex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
+	function validateValidationUrl() {
+		var validationUrl = $(".validationUrl").val();
+		var regex = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+		return regex.test(validationUrl);
+	}
+
+	// Check if both inputs are correct
+	function checkInputs() {
+		if (validateEmail() && validateValidationUrl()) {
+			$(".btn-submit").prop("disabled", false);
+		} else {
+			$(".btn-submit").prop("disabled", true);
+		}
+	}
+
+	// Validate inputs on blur
+	$(".email").on("blur", function () {
 		var invalidFeedback = $(this).siblings(".invalid-feedback");
-		if (!regex.test(validationUrl)) {
+		if (!validateEmail()) {
 			$(this).addClass("is-invalid");
 			invalidFeedback.addClass("show");
-			$("#submit").prop("disabled", true);
 		} else {
 			$(this).removeClass("is-invalid");
 			invalidFeedback.removeClass("show");
-			if ($("#email").val() !== "") {
-				$("#submit").prop("disabled", false);
-			}
 		}
+		checkInputs();
+	});
+
+	$(".validationUrl").on("blur", function () {
+		var invalidFeedback = $(this).siblings(".invalid-feedback");
+		if (!validateValidationUrl()) {
+			$(this).addClass("is-invalid");
+			invalidFeedback.addClass("show");
+		} else {
+			$(this).removeClass("is-invalid");
+			invalidFeedback.removeClass("show");
+		}
+		checkInputs();
 	});
 
 	// Submit the form when the user clicks the button
-	$("#verificationForm").submit(function (event) {
+	$(".verification-form").submit(function (event) {
 		event.preventDefault();
 		var formData = {
-			email: $("#email").val(),
-			validationUrl: $("#validationUrl").val(),
+			email: $(".email").val(),
+			validationUrl: $(".validationUrl").val(),
 		};
 		$.ajax({
 			url: formData.validationUrl,
